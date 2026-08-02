@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.claude/settings.local.json
+
+# real secrets live here, not the .example
+config.ini
+
+# render output / scratch previews, not source
+*.png

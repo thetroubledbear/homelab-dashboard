@@ -1,0 +1,24 @@
+{
+    "items": [
+        {
+            "name": "einkdash",
+            "priority": 1,
+            "items": [
+                {
+                    "name": "Start dashboard",
+                    "priority": 1,
+                    "action": "bin/dash.sh",
+                    "exitmenu": true,
+                    "status": 0
+                },
+                {
+                    "name": "Stop dashboard",
+                    "priority": 2,
+                    "action": "bin/stop.sh",
+                    "exitmenu": true,
+                    "status": 0
+                }
+            ]
+        }
+    ]
+}

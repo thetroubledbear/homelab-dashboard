@@ -1,0 +1,15 @@
+[Unit]
+Description=einkdash renderer for Kindle
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /opt/einkdash/server.py -c /etc/einkdash/config.ini
+Restart=always
+RestartSec=10
+User=einkdash
+Group=einkdash
+
+[Install]
+WantedBy=multi-user.target

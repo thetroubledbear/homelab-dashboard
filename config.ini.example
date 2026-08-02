@@ -1,0 +1,40 @@
+[proxmox]
+# Tailscale IP works whether the Pi is home or not
+host = https://100.x.y.z:8006
+node = pve
+token_id = dash@pve!einkdash
+token_secret = xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+# Proxmox ships a self-signed cert by default
+verify_tls = false
+# Max 2 shown; first two win
+storages = local, local-lvm
+
+[display]
+# One of: epd2in13_V2, epd2in13_V3, epd2in13_V4
+# Check the sticker on the panel ribbon or the box
+driver = epd2in13_V3
+# 180 if the text comes out upside down for your mounting
+rotate = 0
+# Force a refresh at least this often even if nothing changed
+max_idle_seconds = 3600
+
+[services]
+# label = url    (labels are truncated to 5 chars on screen, max 4 entries)
+nc = https://cloud.example.com
+pls = https://paperless.example.com
+npm = http://192.168.1.10:81
+
+[kindle]
+listen_host = 0.0.0.0
+listen_port = 8080
+# Must match INTERVAL in the Kindle's einkdash.conf (used for the
+# "next refresh" line in the footer)
+refresh_minutes = 10
+# Don't re-poll Proxmox more often than this, even on repeated requests
+min_render_seconds = 60
+# How much CPU history the footer sparkline shows. Sample points are
+# saved to state_dir/history.json, one per real render.
+history_hours = 6
+# Must be writable by the einkdash service user -- deploy.sh creates
+# and chowns this automatically, no need to touch it by hand.
+state_dir = /var/lib/einkdash
